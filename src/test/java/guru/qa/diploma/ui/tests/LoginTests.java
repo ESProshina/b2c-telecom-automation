@@ -2,7 +2,11 @@ package guru.qa.diploma.ui.tests;
 
 import guru.qa.diploma.TestBase;
 import guru.qa.diploma.ui.pages.LoginPage;
-import io.qameta.allure.*;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 

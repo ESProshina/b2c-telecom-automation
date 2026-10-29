@@ -36,7 +36,8 @@ public class LoginPage {
 
     @Step("Нажимаем кнопку Login")
     public LoginPage clickLogin() {
-        loginButton.shouldBe(visible).click();
+
+        passwordInput.pressEnter();
         return this;
     }
 

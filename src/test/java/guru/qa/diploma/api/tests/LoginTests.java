@@ -25,13 +25,11 @@ public class LoginTests extends TestBase {
     @Test
     @DisplayName("Позитивный: Успешная авторизация (200 ОК)")
     public void successfulLoginTest() {
-
         LoginBodyModel loginData = new LoginBodyModel(loginUsername, loginPassword);
-
 
         step("Отправка POST /auth/token/ с логином " + loginUsername, () -> {
             given()
-                    .baseUri("https://book-club.qa.guru") // Адрес старого API
+                    .baseUri("https://book-club.qa.guru")
                     .contentType("application/json")
                     .body(loginData)
                     .when()
@@ -39,7 +37,6 @@ public class LoginTests extends TestBase {
                     .then()
                     .log().all();
         });
-
 
         assertThat(true).isTrue();
     }
