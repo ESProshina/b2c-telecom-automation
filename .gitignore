@@ -6,10 +6,10 @@ out/
 *.iws
 *.ipr
 *.log
+*.apk
 
-# Allure
 allure-results/
 allure-report/
 
-# Секреты
+
 src/test/resources/credentials-local.properties

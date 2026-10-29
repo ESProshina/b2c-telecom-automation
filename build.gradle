@@ -56,6 +56,10 @@ dependencies {
     // Lombok
     testCompileOnly 'org.projectlombok:lombok:1.18.30'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
+    // Mobile зависимости
+    testImplementation "com.codeborne:selenide-appium:7.6.0" // Версия как у основного Selenide
+    testImplementation "io.appium:java-client:9.2.2"
+    testImplementation "commons-io:commons-io:2.15.1"
 }
 
 test {
