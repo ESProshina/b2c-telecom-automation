@@ -1,0 +1,15 @@
+.gradle/
+build/
+out/
+.idea/
+*.iml
+*.iws
+*.ipr
+*.log
+
+# Allure
+allure-results/
+allure-report/
+
+# Секреты
+src/test/resources/credentials-local.properties
