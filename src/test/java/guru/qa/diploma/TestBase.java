@@ -30,8 +30,13 @@ public class TestBase {
         Configuration.browserVersion = config.getBrowserVersion();
 
 
+        Configuration.timeout = 15000;
+
+
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
+
+        options.addArguments("--window-size=" + config.getBrowserSize().replace("x", ","));
         Configuration.browserCapabilities = options;
 
         if (config.getRemoteUrl() != null && !config.getRemoteUrl().isEmpty()) {
@@ -42,7 +47,6 @@ public class TestBase {
     @AfterEach
     void tearDown() {
         try {
-
             Attachments.screenshot();
             Attachments.pageSource();
             Attachments.browserConsoleLogs();
