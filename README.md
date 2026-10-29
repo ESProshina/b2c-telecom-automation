@@ -51,5 +51,7 @@
 ### Jenkins Job (Сборка)
 !https://jenkins.qa.guru/view/java-students/job/ESPro-b2c-telecom-automation/
 
+## 📋 Документация
+* [Тест-план (Manual & Automated Test Cases)](TEST_PLAN.md)
 ---
 **Автор:** Елена Прошина (QA Automation Engineer)
