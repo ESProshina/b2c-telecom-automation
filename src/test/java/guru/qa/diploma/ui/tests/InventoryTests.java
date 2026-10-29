@@ -20,7 +20,7 @@ public class InventoryTests extends TestBase {
 
     @BeforeEach
     void loginAsStandardUser() {
-        // Авторизуемся в ЛК абонента
+
         loginPage.openPage()
                 .setUsername("standard_user")
                 .setPassword("secret_sauce")
@@ -32,7 +32,6 @@ public class InventoryTests extends TestBase {
     @Severity(SeverityLevel.CRITICAL)
     void addToCartTest() {
         inventoryPage
-                // В коде передаем реальное имя товара, но в Allure шаг называется "Подключаем услугу..."
                 .addTariffToCart("Sauce Labs Backpack")
                 .shouldHaveCartBadgeCount("1");
     }
