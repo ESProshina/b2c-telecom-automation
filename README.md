@@ -42,14 +42,14 @@
 ### Общий вид Allure Report (все блоки)
 ![Allure Overview](images/allure_overview.png)
 
-### Детализация UI-тестов (Бизнес-легенда)
+### Детализация UI-тестов 
 ![Allure Behaviors](images/allure_behaviors.png)
 
 ### Мобильные тесты (Onboarding)
 ![allure_mobile.png](images/allure_mobile.png)
 
 ### Jenkins Job (Сборка)
-![Jenkins](images/jenkins_job.png)
+!https://jenkins.qa.guru/view/java-students/job/ESPro-b2c-telecom-automation/
 
 ---
 **Автор:** Елена Прошина (QA Automation Engineer)

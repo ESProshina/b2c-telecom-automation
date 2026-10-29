@@ -2,15 +2,15 @@ package guru.qa.diploma;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import guru.qa.diploma.attach.Attachments; // <--- Исправлен импорт
-import guru.qa.diploma.config.WebDriverConfig; // <--- Исправлен импорт
+import guru.qa.diploma.attach.Attachments;
+import guru.qa.diploma.config.WebDriverConfig;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class TestBase {
 
@@ -29,6 +29,11 @@ public class TestBase {
         Configuration.browserSize = config.getBrowserSize();
         Configuration.browserVersion = config.getBrowserVersion();
 
+
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
+        Configuration.browserCapabilities = options;
+
         if (config.getRemoteUrl() != null && !config.getRemoteUrl().isEmpty()) {
             Configuration.remote = config.getRemoteUrl();
         }
@@ -37,6 +42,7 @@ public class TestBase {
     @AfterEach
     void tearDown() {
         try {
+
             Attachments.screenshot();
             Attachments.pageSource();
             Attachments.browserConsoleLogs();
