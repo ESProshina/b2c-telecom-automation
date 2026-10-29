@@ -1,9 +1,11 @@
 package guru.qa.diploma.ui.pages;
 
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
@@ -15,13 +17,22 @@ public class InventoryPage {
 
     @Step("Подключаем услугу (тариф) '{itemName}' в личном кабинете")
     public InventoryPage addTariffToCart(String itemName) {
-        $$(".inventory_item").findBy(text(itemName)).find("button").click();
+
+        SelenideElement button = $$(".inventory_item")
+                .findBy(text(itemName))
+                .find("button");
+
+        button.shouldBe(visible);
+
+
+        Selenide.executeJavaScript("arguments[0].click();", button);
+
         return this;
     }
 
     @Step("Проверяем, что в корзине подключено услуг: {count}")
     public InventoryPage shouldHaveCartBadgeCount(String count) {
-        cartBadge.shouldHave(text(count));
+        cartBadge.shouldBe(visible).shouldHave(text(count));
         return this;
     }
 
