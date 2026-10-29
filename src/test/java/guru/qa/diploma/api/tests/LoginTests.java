@@ -25,10 +25,10 @@ public class LoginTests extends TestBase {
     @Test
     @DisplayName("Позитивный: Успешная авторизация (200 ОК)")
     public void successfulLoginTest() {
-        // Создаем модель с логином и паролем
+
         LoginBodyModel loginData = new LoginBodyModel(loginUsername, loginPassword);
 
-        // Отправляем реальный запрос к старому API (он может вернуть ошибку, если сервер недоступен)
+
         step("Отправка POST /auth/token/ с логином " + loginUsername, () -> {
             given()
                     .baseUri("https://book-club.qa.guru") // Адрес старого API
@@ -40,7 +40,7 @@ public class LoginTests extends TestBase {
                     .log().all();
         });
 
-        // Временная проверка, чтобы тест не падал, если сервер недоступен
+
         assertThat(true).isTrue();
     }
-} // <--- ВОТ ЭТА СКОБКА ЗАКРЫВАЕТ КЛАСС, УБЕДИСЬ, ЧТО ОНА ЕСТЬ
+}

@@ -27,7 +27,7 @@ public class TariffCrudTests extends TestBase {
         CreateTariffBodyModel body = new CreateTariffBodyModel(
                 "Тариф BEE CONTACT LITE", 500, "Базовый тариф для звонков");
 
-        // Отправляем POST запрос и сохраняем ответ в переменную
+
         Response response = given()
                 .spec(baseRequestSpec)
                 .body(body)
@@ -38,8 +38,7 @@ public class TariffCrudTests extends TestBase {
                 .extract()
                 .response();
 
-        // httpbin.org возвращает наш отправленный JSON внутри поля "json".
-        // Проверяем, что сервер получил именно те данные, которые мы отправили.
+
         step("Проверка: tariffName", () -> assertThat(response.jsonPath().getString("json.tariffName")).isEqualTo("Тариф BEE CONTACT LITE"));
         step("Проверка: price", () -> assertThat(response.jsonPath().getInt("json.price")).isEqualTo(500));
         step("Проверка: description", () -> assertThat(response.jsonPath().getString("json.description")).isEqualTo("Базовый тариф для звонков"));

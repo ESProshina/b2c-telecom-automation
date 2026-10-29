@@ -8,7 +8,7 @@ import static io.restassured.http.ContentType.JSON;
 
 public class BaseSpec {
 
-    // Используем публичное API для демонстрации
+
     public static final RequestSpecification baseRequestSpec = new RequestSpecBuilder()
             .setBaseUri("https://httpbin.org")
             .setBasePath("/")
