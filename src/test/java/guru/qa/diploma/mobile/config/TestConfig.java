@@ -10,7 +10,7 @@ import org.aeonbits.owner.Config;
 })
 public interface TestConfig extends Config {
     @Key("appiumUrl")
-    @DefaultValue("http://127.0.0.1:4723/wd/hub")
+    @DefaultValue("http://127.0.0.1:4723")
     String appiumUrl();
 
     @Key("browserstack.hubUrl")

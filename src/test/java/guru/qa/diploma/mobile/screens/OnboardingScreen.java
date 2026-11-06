@@ -10,7 +10,6 @@ import static com.codeborne.selenide.appium.SelenideAppium.$;
 
 public class OnboardingScreen {
 
-
     private final SelenideElement titleKnowledge =
             $(AppiumBy.xpath("//android.widget.TextView[@text=concat('All the world', \"'\", 's knowledge')]"));
     private final SelenideElement titleDataPrivacy =
@@ -33,7 +32,7 @@ public class OnboardingScreen {
     @Step("Нажимаем кнопку 'Пропустить' (Skip) и переходим на главный экран")
     public DashboardScreen clickSkip() {
         skipButton.shouldBe(visible).click();
-        return new DashboardScreen(); // Изменено на DashboardScreen
+        return new DashboardScreen();
     }
 
     @Step("Проверяем экран 1: Ознакомление с возможностями сервиса")
@@ -42,7 +41,7 @@ public class OnboardingScreen {
         return this;
     }
 
-    @Step("Проверяем экран 2: Согласие на обработку персональных данных (Data & Privacy)")
+    @Step("Проверяем экран 2: Согласие на обработку персональных данных")
     public OnboardingScreen checkDataPrivacyScreen() {
         titleDataPrivacy.shouldBe(visible).shouldHave(text("Data & Privacy"));
         return this;
@@ -60,16 +59,18 @@ public class OnboardingScreen {
         return this;
     }
 
-    @Step("Проходим все 4 приветственных экрана онбординга")
-    public DashboardScreen passOnboarding() {
-        return this
-                .checkKnowledgeScreen()
-                .clickForward()
-                .checkDataPrivacyScreen()
-                .clickForward()
-                .checkLanguagesScreen()
-                .clickForward()
-                .checkCuriosityScreen()
-                .clickSkip();
+
+    @Step("Быстро пропускаем онбординг (кликаем Skip, если доступен, иначе Forward)")
+    public DashboardScreen skipOnboarding() {
+        for (int i = 0; i < 4; i++) {
+            if (skipButton.exists()) {
+                skipButton.click();
+                break;
+            }
+            if (forwardButton.exists()) {
+                forwardButton.click();
+            }
+        }
+        return new DashboardScreen();
     }
 }

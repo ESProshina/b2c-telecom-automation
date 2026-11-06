@@ -12,8 +12,19 @@ public class OnboardingTest extends MobileTestBase {
     @Test
     @DisplayName("Прохождение приветственных экранов при первом запуске ЛК")
     public void onboardingTest() {
-        step("Пройти онбординг и проверить открытие главного экрана (Dashboard)", () -> {
-            new OnboardingScreen().passOnboarding().checkOpened();
+        OnboardingScreen onboarding = new OnboardingScreen();
+
+        step("Проверить все 4 экрана онбординга и пропустить его", () -> {
+            onboarding
+                    .checkKnowledgeScreen()
+                    .clickForward()
+                    .checkDataPrivacyScreen()
+                    .clickForward()
+                    .checkLanguagesScreen()
+                    .clickForward()
+                    .checkCuriosityScreen()
+                    .clickSkip()
+                    .checkOpened(); // Проверяем, что открылся DashboardScreen
         });
     }
 }
